@@ -38,7 +38,7 @@ financial-valuation-toolkit/
 ├── utilities/
 │   ├── data_fetcher.py
 │   ├── financial_functions.py
-│   └── visualization.py
+│   └── visualisation.py
 ├── analysis/
 │   ├── case_studies/
 │   │   ├── renewable_energy_dcf/
@@ -77,14 +77,14 @@ financial-valuation-toolkit/
 - Trading multiples calculation (EV/EBITDA, P/E, etc.)
 - Statistical analysis (median, quartiles, regression)
 - Peer group selection and screening
-- Valuation range output with visualizations
+- Valuation range output with visualisations
 
 ### 4. Merger Model (M&A Analysis)
 **File: `models/merger/merger_model.py`**
 - Pro forma financial statements
 - Accretion/dilution analysis
 - Synergy modeling and timing
-- Financing structure optimization
+- Financing structure optimisation
 - Sensitivity analysis on key assumptions
 
 ## Key Features
@@ -113,11 +113,11 @@ financial-valuation-toolkit/
 ```python
 pandas              # Data manipulation and analysis
 numpy              # Numerical computations
-matplotlib/seaborn # Data visualization
+matplotlib/seaborn # Data visualisation
 scipy              # Statistical analysis
 yfinance           # Market data fetching
 openpyxl           # Excel integration
-plotly             # Interactive visualizations
+plotly             # Interactive visualisations
 ```
 
 ### Model Architecture
@@ -140,7 +140,7 @@ plotly             # Interactive visualizations
 
 ### Asset Management
 - Equity research and stock picking
-- Portfolio construction and optimization
+- Portfolio construction and optimisation
 - Risk assessment and monitoring
 
 ### Infrastructure Investment
