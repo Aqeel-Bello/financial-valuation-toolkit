@@ -40,7 +40,7 @@ class LBOModel:
         self.mgmt_rollover_pct = 0.15  # 15% management rollover
         self.mgmt_option_pool = 0.05   # 5% option pool for management
         
-        print(f"🏗️ LBO Deal Structure - {self.company_name}")
+        print(f" LBO Deal Structure - {self.company_name}")
         print(f"   Revenue (LTM): ${self.revenue_ltm:,.0f}M")
         print(f"   EBITDA (LTM):  ${self.ebitda_ltm:,.0f}M")
         print(f"   Entry Multiple: {self.entry_multiple:.1f}x")
@@ -68,7 +68,7 @@ class LBOModel:
         # Depreciation (% of Revenue - capital intensive business)
         self.depreciation_pct = 0.08
         
-        print(f"\n📈 Operating Assumptions:")
+        print(f"\n Operating Assumptions:")
         print(f"   Revenue Growth (Yr 1): {self.revenue_growth[0]:.1%}")
         print(f"   EBITDA Margin (Base): {base_margin:.1%}")
         print(f"   Target EBITDA Margin: {self.ebitda_margins[-1]:.1%}")
@@ -100,7 +100,7 @@ class LBOModel:
         self.total_debt = self.senior_debt_amount + self.sub_debt_amount
         self.sponsor_equity = self.purchase_price * self.sponsor_equity_pct
         
-        print(f"\n💰 Financing Structure:")
+        print(f"\n Financing Structure:")
         print(f"   Purchase Price: ${self.purchase_price:,.0f}M")
         print(f"   Sponsor Equity: ${self.sponsor_equity:,.0f}M ({self.sponsor_equity_pct:.1%})")
         print(f"   Senior Debt:    ${self.senior_debt_amount:,.0f}M ({self.senior_debt_rate:.1%})")
@@ -320,7 +320,7 @@ class LBOModel:
         returns = self.calculate_returns()
         
         # Sources & Uses
-        print(f"\n💰 SOURCES & USES OF FUNDS")
+        print(f"\n SOURCES & USES OF FUNDS")
         print("-" * 50)
         print("USES:")
         print(f"  Purchase Price:           ${self.purchase_price:,.0f}M")
@@ -334,7 +334,7 @@ class LBOModel:
         print(f"  Total Sources:            ${self.purchase_price * 1.02:,.0f}M")
         
         # Operating Performance
-        print(f"\n📈 PROJECTED OPERATING PERFORMANCE")
+        print(f"\n PROJECTED OPERATING PERFORMANCE")
         print("-" * 50)
         for _, row in operating.iterrows():
             print(f"{int(row['year'])}: Revenue ${row['revenue']:,.0f}M | "
@@ -342,7 +342,7 @@ class LBOModel:
                   f"FCF ${row['free_cash_flow']:,.0f}M")
         
         # Debt Paydown
-        print(f"\n💳 DEBT PAYDOWN SCHEDULE")
+        print(f"\n DEBT PAYDOWN SCHEDULE")
         print("-" * 50)
         for _, row in debt_sched.iterrows():
             print(f"{int(row['year'])}: Beginning Debt ${row['beg_total_debt']:,.0f}M | "
@@ -351,7 +351,7 @@ class LBOModel:
                   f"Ending Debt ${row['end_total_debt']:,.0f}M")
         
         # Returns Analysis
-        print(f"\n🎯 RETURNS ANALYSIS (5-Year Hold)")
+        print(f"\n RETURNS ANALYSIS (5-Year Hold)")
         print("-" * 50)
         for _, row in returns.iterrows():
             print(f"{row['scenario']:>8}: {row['exit_multiple']:.1f}x Exit | "
@@ -363,7 +363,7 @@ class LBOModel:
         base_case_irr = returns[returns['scenario'] == 'Base']['irr'].iloc[0]
         base_case_moic = returns[returns['scenario'] == 'Base']['moic'].iloc[0]
         
-        print(f"\n⭐ INVESTMENT RECOMMENDATION")
+        print(f"\n INVESTMENT RECOMMENDATION")
         print("-" * 30)
         print(f"Base Case IRR:        {base_case_irr:.1%}")
         print(f"Base Case MOIC:       {base_case_moic:.1f}x")
@@ -443,7 +443,7 @@ class LBOModel:
 def main():
     """Main function to run LBO analysis"""
     
-    print("🚀 Starting LBO Analysis - NextEra Energy Subsidiary...")
+    print(" Starting LBO Analysis - NextEra Energy Subsidiary...")
     
     # Initialize LBO model
     lbo = LBOModel("NEE Energy Infrastructure")
@@ -454,7 +454,7 @@ def main():
     # Create visualizations
     lbo.create_lbo_visualizations()
     
-    print(f"\n✅ LBO Analysis Complete!")
+    print(f"\n LBO Analysis Complete!")
     
     return lbo
 
