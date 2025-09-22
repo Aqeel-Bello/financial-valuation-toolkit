@@ -32,13 +32,13 @@ class DCFModel:
             self.revenue_ttm = company_data['revenue'] / 1e6
             self.ebitda_ttm = company_data['ebitda'] / 1e6
             
-            print(f"✅ Loaded data for {self.ticker}")
+            print(f" Loaded data for {self.ticker}")
             print(f"   Revenue (TTM): ${self.revenue_ttm:,.0f}M")
             print(f"   EBITDA (TTM):  ${self.ebitda_ttm:,.0f}M")
             print(f"   Market Cap:    ${self.market_cap:,.0f}M")
             
         except Exception as e:
-            print(f"❌ Error loading data: {e}")
+            print(f" Error loading data: {e}")
             # Use NextEra Energy defaults if CSV fails
             self.market_cap = 143677  # From your data
             self.enterprise_value = 247600
@@ -79,7 +79,7 @@ class DCFModel:
         # Terminal Value
         self.terminal_growth_rate = 0.025  # 2.5% long-term growth
         
-        print(f"\n📊 Key Assumptions:")
+        print(f"\n Key Assumptions:")
         print(f"   WACC: {self.wacc:.1%}")
         print(f"   Terminal Growth: {self.terminal_growth_rate:.1%}")
         print(f"   Revenue Growth (Yr 1): {self.revenue_growth[0]:.1%}")
@@ -270,7 +270,7 @@ class DCFModel:
         valuation = self.calculate_valuation()
         
         # Display projections
-        print(f"\n📈 FINANCIAL PROJECTIONS ($ Millions)")
+        print(f"\n FINANCIAL PROJECTIONS ($ Millions)")
         print("-" * 60)
         display_cols = ['year', 'revenue', 'ebitda', 'ebitda_margin', 'fcf', 'pv_fcf']
         proj_display = projections[display_cols].copy()
@@ -282,7 +282,7 @@ class DCFModel:
                   f"FCF ${row['fcf']:,.0f}M | PV ${row['pv_fcf']:,.0f}M")
         
         # Display valuation
-        print(f"\n💰 VALUATION SUMMARY")
+        print(f"\n VALUATION SUMMARY")
         print("-" * 40)
         print(f"Sum of PV of FCF (2024-2028):    ${valuation['sum_pv_fcf']:,.0f}M")
         print(f"PV of Terminal Value:           ${valuation['pv_terminal_value']:,.0f}M")
@@ -290,7 +290,7 @@ class DCFModel:
         print(f"Less: Net Debt:                 ${valuation['net_debt']:,.0f}M")
         print(f"Equity Value:                   ${valuation['equity_value']:,.0f}M")
         print(f"Current Market Cap:             ${valuation['current_market_cap']:,.0f}M")
-        print(f"\n🎯 INVESTMENT RECOMMENDATION")
+        print(f"\n INVESTMENT RECOMMENDATION")
         print(f"Upside/Downside:                {valuation['upside_downside']:+.1%}")
         
         if valuation['upside_downside'] > 0.15:
@@ -355,7 +355,7 @@ class DCFModel:
 def main():
     """Main function to run DCF analysis"""
     
-    print("🚀 Starting NextEra Energy DCF Analysis...")
+    print(" Starting DCF Analysis...")
     
     # Initialize and run DCF model
     dcf = DCFModel("NEE")
@@ -367,11 +367,11 @@ def main():
     dcf.create_visualizations()
     
     # Optional: Run sensitivity analysis
-    print(f"\n🔄 Running sensitivity analysis...")
+    print(f"\n Running sensitivity analysis...")
     sensitivity = dcf.sensitivity_analysis()
     
-    print(f"\n✅ DCF Analysis Complete!")
-    print(f"📊 Enterprise Value Range: ${sensitivity['equity_value'].min():,.0f}M - ${sensitivity['equity_value'].max():,.0f}M")
+    print(f"\n DCF Analysis Complete!")
+    print(f"Enterprise Value Range: ${sensitivity['equity_value'].min():,.0f}M - ${sensitivity['equity_value'].max():,.0f}M")
     
     return dcf
 
